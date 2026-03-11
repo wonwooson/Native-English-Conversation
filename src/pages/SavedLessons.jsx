@@ -83,24 +83,23 @@ function SavedLessons() {
             ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                     {savedLessons.map(lesson => (
-                        <div key={lesson.id} className="card glass flex-center" style={{ flexDirection: 'row', justifyContent: 'space-between', padding: '1.25rem' }}>
-
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                        <div key={lesson.id} className="card glass saved-lesson-card">
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1 }}>
                                 <input
                                     type="checkbox"
                                     checked={selectedIds.includes(lesson.id)}
                                     onChange={() => handleToggleSelect(lesson.id)}
-                                    style={{ width: '1.25rem', height: '1.25rem', cursor: 'pointer' }}
+                                    style={{ width: '1.25rem', height: '1.25rem', cursor: 'pointer', flexShrink: 0 }}
                                 />
-                                <div>
-                                    <h3 style={{ fontSize: '1.25rem', margin: '0 0 0.25rem 0' }}>{lesson.topic}</h3>
-                                    <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '0.9rem' }}>
-                                        {new Date(lesson.created_at).toLocaleDateString()} • {lesson.situation.substring(0, 60)}...
+                                <div style={{ minWidth: 0, flex: 1 }}>
+                                    <h3 style={{ fontSize: '1.2rem', margin: '0 0 0.25rem 0', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{lesson.topic}</h3>
+                                    <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '0.85rem', lineHeight: '1.4' }}>
+                                        {new Date(lesson.created_at).toLocaleDateString()} • {lesson.situation.substring(0, 80)}...
                                     </p>
                                 </div>
                             </div>
 
-                            <button onClick={() => handleReview(lesson)} className="btn btn-secondary" style={{ padding: '0.5rem 1rem' }}>
+                            <button onClick={() => handleReview(lesson)} className="btn btn-secondary review-btn" style={{ padding: '0.5rem 1rem', flexShrink: 0 }}>
                                 <ExternalLink size={18} />
                                 Review
                             </button>

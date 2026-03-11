@@ -275,6 +275,24 @@ h4 {
   .responsive-script-container {
     padding-right: 1.5rem !important;
   }
+
+  .saved-lesson-card {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 1rem !important;
+  }
+
+  .review-btn {
+    width: 100%;
+  }
+}
+
+.saved-lesson-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
 }
 
 .responsive-input-group {
