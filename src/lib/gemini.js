@@ -21,7 +21,7 @@ export const generateLessonContent = async (topic) => {
       ],
       "opic_script": "A 30-60 second natural English script on this topic suitable for an OPIc exam level IM-AL.",
       "vocabulary": [
-        {"word": "...", "meaning": "...", "part_of_speech": "..."}
+        {"word": "...", "meaning": "...", "part_of_speech": "...", "phonetic": "International Phonetic Alphabet (IPA) symbol here"}
       ]
     }
   `;

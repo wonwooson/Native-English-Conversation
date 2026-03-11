@@ -217,7 +217,11 @@ function LearningDashboard() {
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
                             {currentLesson.vocabulary?.map((v, i) => (
                                 <div key={i} style={{ display: 'flex', flexDirection: 'column', padding: '0.75rem', backgroundColor: 'var(--background)', borderRadius: 'var(--radius-sm)' }}>
-                                    <span style={{ fontWeight: 'bold' }}>{v.word} <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 'normal' }}>({v.part_of_speech})</span></span>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.25rem' }}>
+                                        <span style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>{v.word}</span>
+                                        <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>({v.part_of_speech})</span>
+                                    </div>
+                                    {v.phonetic && <span style={{ fontSize: '0.9rem', color: 'var(--primary)', fontStyle: 'italic', marginBottom: '0.25rem' }}>{v.phonetic}</span>}
                                     <span style={{ color: 'var(--text-muted)' }}>{v.meaning}</span>
                                 </div>
                             ))}
