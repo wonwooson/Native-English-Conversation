@@ -149,28 +149,29 @@ function LearningDashboard() {
                         <h3 style={{ marginBottom: '1rem', color: 'var(--primary)', borderBottom: '1px solid var(--border)', paddingBottom: '0.5rem' }}>Situation Dialogue</h3>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem' }}>
                             {currentLesson.dialogue?.map((line, i) => (
-                                <div key={i} style={{
-                                    display: 'flex', gap: '1rem', alignItems: 'flex-start',
+                                <div key={i} className="responsive-dialogue" style={{
                                     backgroundColor: line.speaker === 'A' ? 'rgba(79, 70, 229, 0.05)' : 'transparent',
-                                    padding: '1rem', borderRadius: 'var(--radius-md)'
+                                    borderRadius: 'var(--radius-md)', display: 'flex', gap: '1rem', padding: '1rem'
                                 }}>
-                                    <div style={{ fontWeight: 'bold', color: 'var(--primary)', minWidth: '30px' }}>{line.speaker}</div>
+                                    <div className="dialogue-top-row">
+                                        <div style={{ fontWeight: 'bold', color: 'var(--primary)', minWidth: '30px' }}>{line.speaker}</div>
+                                        <button
+                                            onClick={() => {
+                                                const utterance = new SpeechSynthesisUtterance(line.text);
+                                                utterance.lang = 'en-US';
+                                                utterance.rate = 0.9;
+                                                window.speechSynthesis.speak(utterance);
+                                            }}
+                                            className="btn btn-secondary"
+                                            style={{ padding: '0.4rem', borderRadius: '50%', minWidth: '36px', height: '36px' }}
+                                        >
+                                            <Volume2 size={18} />
+                                        </button>
+                                    </div>
                                     <div style={{ flex: 1 }}>
                                         <p style={{ fontSize: '1.1rem', marginBottom: '0.25rem', color: 'var(--text-main)' }}>{line.text}</p>
                                         <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{line.translation}</p>
                                     </div>
-                                    <button
-                                        onClick={() => {
-                                            const utterance = new SpeechSynthesisUtterance(line.text);
-                                            utterance.lang = 'en-US';
-                                            utterance.rate = 0.9;
-                                            window.speechSynthesis.speak(utterance);
-                                        }}
-                                        className="btn btn-secondary"
-                                        style={{ padding: '0.4rem', borderRadius: '50%', minWidth: '36px', height: '36px' }}
-                                    >
-                                        <Volume2 size={18} />
-                                    </button>
                                 </div>
                             ))}
                         </div>
@@ -192,22 +193,24 @@ function LearningDashboard() {
                 {activeTab === 'opic' && (
                     <div className="animate-fade-in">
                         <h3 style={{ marginBottom: '1rem', color: 'var(--primary)', borderBottom: '1px solid var(--border)', paddingBottom: '0.5rem' }}>OPIc Speaking Script (30-60s)</h3>
-                        <div style={{ position: 'relative' }}>
-                            <div style={{ backgroundColor: 'var(--background)', padding: '1.5rem', borderRadius: 'var(--radius-md)', marginBottom: '2rem', fontSize: '1.1rem', lineHeight: '1.6', paddingRight: '4rem' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                            <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '0.5rem' }}>
+                                <button
+                                    onClick={() => {
+                                        const utterance = new SpeechSynthesisUtterance(currentLesson.opic_script);
+                                        utterance.lang = 'en-US';
+                                        utterance.rate = 0.9;
+                                        window.speechSynthesis.speak(utterance);
+                                    }}
+                                    className="btn btn-secondary"
+                                    style={{ padding: '0.5rem', borderRadius: '50%', width: '40px', height: '40px' }}
+                                >
+                                    <Volume2 size={24} />
+                                </button>
+                            </div>
+                            <div className="responsive-script-container" style={{ backgroundColor: 'var(--background)', padding: '1.5rem', borderRadius: 'var(--radius-md)', marginBottom: '2rem', fontSize: '1.1rem', lineHeight: '1.6', paddingRight: '4rem' }}>
                                 {currentLesson.opic_script}
                             </div>
-                            <button
-                                onClick={() => {
-                                    const utterance = new SpeechSynthesisUtterance(currentLesson.opic_script);
-                                    utterance.lang = 'en-US';
-                                    utterance.rate = 0.9;
-                                    window.speechSynthesis.speak(utterance);
-                                }}
-                                className="btn btn-secondary"
-                                style={{ position: 'absolute', top: '1rem', right: '1rem', padding: '0.5rem', borderRadius: '50%', width: '40px', height: '40px' }}
-                            >
-                                <Volume2 size={24} />
-                            </button>
                         </div>
 
                         <h3 style={{ marginBottom: '1rem', color: 'var(--secondary)', borderBottom: '1px solid var(--border)', paddingBottom: '0.5rem' }}>Essential Vocabulary</h3>

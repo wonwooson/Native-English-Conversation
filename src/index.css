@@ -257,11 +257,33 @@ h4 {
   .speaking-coach-script {
     font-size: 1.1rem !important;
   }
+
+  .responsive-dialogue {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    padding: 1rem !important;
+  }
+
+  .dialogue-top-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .responsive-script-container {
+    padding-right: 1.5rem !important;
+  }
 }
 
 .responsive-input-group {
   display: flex;
   gap: 1rem;
+}
+
+.dialogue-top-row {
+  display: contents;
 }
 
 .mt-4 {
