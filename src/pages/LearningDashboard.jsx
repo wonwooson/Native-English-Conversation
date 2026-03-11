@@ -273,9 +273,9 @@ function LearningDashboard() {
                                     </div>
                                 </div>
 
-                                {/* Render HTML securely using dangerouslySetInnerHTML since we structured the AI prompt to give specific span classes */}
                                 <div
-                                    style={{ backgroundColor: 'var(--background)', padding: '2rem', borderRadius: 'var(--radius-md)', fontSize: '1.2rem', lineHeight: '2' }}
+                                    className="speaking-coach-script"
+                                    style={{ backgroundColor: 'var(--background)', padding: 'clamp(1rem, 5vw, 2rem)', borderRadius: 'var(--radius-md)', lineHeight: '2' }}
                                     dangerouslySetInnerHTML={{ __html: speakingGuide.guided_text }}
                                 />
 

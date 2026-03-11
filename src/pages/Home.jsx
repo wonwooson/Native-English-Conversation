@@ -27,28 +27,29 @@ function Home() {
     };
 
     return (
-        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center', paddingTop: '4rem' }}>
+        <div className="container" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center', paddingTop: 'clamp(2rem, 10vh, 4rem)' }}>
             <div className="animate-fade-in">
-                <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>
+                <h1 style={{ fontSize: 'clamp(1.75rem, 8vw, 3rem)', marginBottom: '1rem' }}>
                     Master English with <br />
                     <span className="gradient-text">Your Native AI Tutor</span>
                 </h1>
-                <p style={{ color: 'var(--text-muted)', fontSize: '1.25rem', marginBottom: '3rem' }}>
+                <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(1rem, 4vw, 1.25rem)', marginBottom: '2.5rem' }}>
                     Input a topic in Korean and get tailored situations, dialogues, OPIc scripts, and visual speaking coaching instantly.
                 </p>
 
-                <form onSubmit={handleStart} className="card glass" style={{ padding: '2rem', marginBottom: '4rem' }}>
+                <form onSubmit={handleStart} className="card glass" style={{ padding: 'clamp(1rem, 5vw, 2rem)', marginBottom: '3rem' }}>
                     <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}>
-                        <label htmlFor="topic-input" style={{ textAlign: 'left', fontWeight: 'bold' }}>
+                        <label htmlFor="topic-input" style={{ textAlign: 'left', fontWeight: 'bold', fontSize: '0.9rem' }}>
                             What do you want to talk about? (주제를 한글로 입력하세요)
                         </label>
-                        <div style={{ display: 'flex', gap: '1rem' }}>
+                        <div className="responsive-input-group">
                             <input
                                 id="topic-input"
                                 className="input-field"
                                 placeholder="예: 카페에서 아이스 아메리카노 주문하기"
                                 value={topic}
                                 onChange={(e) => setTopic(e.target.value)}
+                                style={{ flex: 1 }}
                             />
                             <button type="submit" className="btn btn-primary" style={{ whiteSpace: 'nowrap' }} disabled={isLoading}>
                                 {isLoading ? 'Loading...' : <><Sparkles size={20} /> Start Lesson</>}

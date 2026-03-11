@@ -51,28 +51,28 @@ function Layout() {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%' }}>
             {/* Navigation Bar */}
-            <nav className="glass" style={{ position: 'sticky', top: 0, zIndex: 50, padding: '1rem' }}>
-                <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <Link to="/" style={{ textDecoration: 'none' }}>
-                        <h1 className="gradient-text" style={{ fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <HomeIcon size={24} />
-                            Tutor<span style={{ color: 'var(--text-main)' }}>AI</span>
+            <nav className="glass" style={{ position: 'sticky', top: 0, zIndex: 50, padding: '0.75rem 1rem' }}>
+                <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
+                    <Link to="/" style={{ textDecoration: 'none', flexShrink: 1 }}>
+                        <h1 className="gradient-text" style={{ fontSize: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.4rem', margin: 0 }}>
+                            <HomeIcon size={20} />
+                            <span>Tutor<span style={{ color: 'var(--text-main)' }}>AI</span></span>
                         </h1>
                     </Link>
 
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexShrink: 0 }}>
                         {user && (
-                            <Link to="/saved" className="btn btn-secondary" style={{ padding: '0.5rem 1rem' }}>
-                                <Bookmark size={18} />
-                                Saved
+                            <Link to="/saved" className="btn btn-secondary" style={{ padding: '0.4rem 0.75rem', fontSize: '0.9rem' }}>
+                                <Bookmark size={16} />
+                                <span className="nav-text">Saved</span>
                             </Link>
                         )}
                         <button
                             onClick={user ? handleLogout : () => setIsLoginModalOpen(true)}
                             className={user ? "btn btn-secondary" : "btn btn-primary"}
-                            style={{ padding: '0.5rem 1rem' }}
+                            style={{ padding: '0.4rem 0.75rem', fontSize: '0.9rem' }}
                         >
-                            {user ? <><LogOut size={18} /> Logout</> : <><LogIn size={18} /> Login</>}
+                            {user ? <><LogOut size={16} /> <span className="nav-text">Logout</span></> : <><LogIn size={16} /> Login</>}
                         </button>
                     </div>
                 </div>
