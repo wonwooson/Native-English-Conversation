@@ -78,6 +78,34 @@ export const useAppStore = create((set, get) => ({
         }
     },
 
+    // QA History actions
+    fetchQAHistory: async (lessonId = null) => {
+        const { user } = get();
+        if (!user) return;
+        try {
+            let query = supabase.from('qa_history').select('*').order('created_at', { ascending: true });
+
+            // If lessonId is provided, we can either filter by it or show all.
+            // For now, let's just fetch all global history for the user, 
+            // or we could filter by lessonId if we want contextual history.
+            // Let's go with global for now as "history" usually means everything.
+            if (lessonId) {
+                // Optional: filter by lessonId
+                // query = query.eq('lesson_id', lessonId);
+            }
+
+            const { data, error } = await query;
+            if (error) throw error;
+            set({ qaHistory: data || [] });
+        } catch (err) {
+            console.error("Error fetching QA history:", err);
+        }
+    },
+
+    addQAHistory: (qa) => {
+        set({ qaHistory: [...get().qaHistory, qa] });
+    },
+
     // Delete lessons (bulk or single)
     deleteLessons: async (ids) => {
         const { user } = get();

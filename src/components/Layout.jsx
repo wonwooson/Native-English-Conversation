@@ -125,8 +125,8 @@ function Layout() {
                 <Outlet />
             </main>
 
-            {/* Global QA Float Action Button (Available if a lesson is active or logged in) */}
-            {user && location.pathname !== '/' && (
+            {/* Global QA Float Action Button (Available if logged in) */}
+            {user && (
                 <>
                     <button
                         onClick={() => setIsQAModalOpen(true)}

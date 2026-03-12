@@ -339,3 +339,16 @@ h4 {
   font-weight: 800;
   font-size: 1.05em;
 }
+:root {
+  --success: #10B981;
+  --primary-light: rgba(79, 70, 229, 0.1);
+}
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.6); opacity: 0.5; }
+}
+
+.dot-pulse {
+  animation: dotPulse 1.5s infinite ease-in-out;
+}
